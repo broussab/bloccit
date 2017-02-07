@@ -18,9 +18,15 @@
 
         <div class="pull-right user-info">
           <% if current_user %>
-          <%= current_user.name %>
-          -
-          <%= link_to "Sign Out", session_path(current_user), method: :delete %>
+          <%= image_tag avatar_url(current_user), class: :gravatar %>
+          <div class='pull-right'>
+            <div>
+              <%= current_user.name %>
+            </div>
+            <div>
+              <%= link_to "Sign Out", session_path(current_user), method:   :delete %>
+            </div>
+          </div>
         <% else %>
           <%= link_to "Sign In", new_session_path %>
           or
@@ -45,4 +51,13 @@
     </div>
 
   </body>
+</html>
+%>
+</div>
+
+</body>
+</html>
+</div>
+
+</body>
 </html>
