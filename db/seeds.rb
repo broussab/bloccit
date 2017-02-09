@@ -41,10 +41,16 @@ end
     resolved: true
   )
 end
+admin = User.create!(
+  name:     'Admin User',
+  email:    'admin@example.com',
+  password: 'helloworld',
+  role:     'admin'
+)
 
-user = User.first
-user.update_attributes!(
-  email: 'alybeic@gmail.com', # replace this with your personal email
+member = User.create!(
+  name:     'Member User',
+  email:    'member@example.com',
   password: 'helloworld'
 )
 
