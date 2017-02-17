@@ -12,15 +12,33 @@
         <h2 class="media-heading"><%= @user.name %></h2>
         <small>
           <%= pluralize(@user.posts.count, 'post') %>,
-          <%= pluralize(@user.comments.count, 'comment') %>
+          <%= pluralize(@user.comments.count, 'comment') %>,
+          <%= pluralize(@user.favorites.count, 'favorite') %>
         </small>
       </div>
     </div>
   </div>
 </div>
-
+<% if post_comment_existence?(@user.posts.count) %>
+<h2><%= @user.name %>
+  has not submitted any posts yet.</h2>
+<% else %>
 <h2>Posts</h2>
 <%= render @user.posts %>
-
+<% end %>
+<% if post_comment_existence?(@user.comments.count) %>
+<h2><%= @user.name %>
+  has not submitted any comments yet.</h2>
+<% else %>
 <h2>Comments</h2>
 <%= render @user.comments %>
+<% end %>
+<% if post_comment_existence?(@user.favorites.count) %>
+<h2><%= @user.name %>
+  has not favorited any posts yet.</h2>
+<% else %>
+<h2>Favorited Posts</h2>
+<% @user.favorites.each do |favorite| %>
+<%= render partial: 'posts/favoritepost', locals: { post: favorite.post } %>
+<% end %>
+<% end %>
